@@ -24,7 +24,7 @@ export default function FilmPage() {
   useEffect(() => {
     if (!movieId) return
     setLoading(true)
-    fetch(`/api/movies/${movieId}`)
+    fetch(`https://theama.onrender.com/api/movies/${movieId}`)
       .then(res => res.json())
       .then(setMovie)
       .catch(() => setMovie(null))
@@ -33,7 +33,7 @@ export default function FilmPage() {
 
   useEffect(() => {
     if (!movieId || !accessToken) return
-    fetch(`/api/watchlist/check/${movieId}`, {
+    fetch(`https://theama.onrender.com/api/watchlist/check/${movieId}`, {
       headers: { Authorization: `Bearer ${accessToken}` },
     })
       .then(res => res.json())
@@ -56,13 +56,13 @@ export default function FilmPage() {
     setWatchlistLoading(true)
     try {
       if (inWatchlist) {
-        await fetch(`/api/watchlist/${movieId}`, {
+        await fetch(`https://theama.onrender.com/api/watchlist/${movieId}`, {
           method: 'DELETE',
           headers: { Authorization: `Bearer ${accessToken}` },
         })
         setInWatchlist(false)
       } else {
-        await fetch('/api/watchlist', {
+        await fetch('https://theama.onrender.com/api/watchlist', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -12,7 +12,7 @@ export default function SearchPage() {
     e.preventDefault()
     if (!query.trim()) return
     setLoading(true)
-    fetch(`/api/movies/search?query=${encodeURIComponent(query)}`)
+    fetch(`https://theama.onrender.com/api/movies/search?query=${encodeURIComponent(query)}`)
       .then(res => res.json())
       .then(data => setMovies(data.results || []))
       .catch(() => setMovies([]))

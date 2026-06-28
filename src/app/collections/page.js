@@ -2,19 +2,49 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { useAuth } from '@/context/AuthContext'
 import PlaybillGrid from '@/components/movies/PlaybillGrid'
 
 export default function CollectionsPage() {
+  const { session } = useAuth()
   const [collections, setCollections] = useState([])
   const [loading, setLoading] = useState(true)
 
+  const accessToken = session?.access_token
+
   useEffect(() => {
-    fetch('/api/collections')
-      .then(res => res.json())
-      .then(data => setCollections(data.collections || []))
+    if (!accessToken) {
+      setLoading(false)
+      return
+    }
+    fetch('https://theama.onrender.com/api/collections', {
+      headers: { Authorization: `Bearer ${accessToken}` },
+    })
+      .then(res => res.ok ? res.json() : [])
+      .then(data => {
+        const cols = Array.isArray(data) ? data : []
+        setCollections(cols.map(col => ({
+          ...col,
+          movies: (col.collection_items || []).map(item => ({
+            id: item.movie_id,
+            title: item.movie_title,
+            poster_path: item.poster_path,
+            backdrop_path: null,
+            vote_average: 0,
+            release_date: '',
+            overview: '',
+            genre_ids: [],
+            original_language: '',
+            adult: false,
+            video: false,
+            popularity: 0,
+            vote_count: 0,
+          })),
+        })))
+      })
       .catch(() => setCollections([]))
       .finally(() => setLoading(false))
-  }, [])
+  }, [accessToken])
 
   return (
     <div className="min-h-screen pt-[72px]" style={{ backgroundColor: 'var(--surface-base)' }}>

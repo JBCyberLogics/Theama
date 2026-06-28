@@ -12,7 +12,7 @@ export default function MyCollectionPage() {
 
   useEffect(() => {
     if (!session?.access_token) return
-    fetch('/api/watchlist', {
+    fetch('https://theama.onrender.com/api/watchlist', {
       headers: { Authorization: `Bearer ${session.access_token}` },
     })
       .then(res => res.json())

@@ -260,10 +260,8 @@ export default function TicketAuthCard({ mode, loading: externalLoading, onSubmi
             <div className="text-right">
               <Link
                 href="/auth/forgot-password"
-                className="text-[13px] no-underline transition-colors"
+                className="text-[13px] no-underline transition-colors hover:text-[var(--color-primary)]"
                 style={{ color: 'var(--text-muted)' }}
-                onMouseEnter={e => (e.currentTarget.style.color = 'var(--color-primary)')}
-                onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
               >
                 Lost your ticket?
               </Link>

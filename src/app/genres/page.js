@@ -39,7 +39,7 @@ export default function GenresPage() {
           {TMDB_GENRES.map(genre => (
             <Link
               key={genre.id}
-              href={`/browse?filter=&genre=${genre.id}`}
+              href={`/browse?genre=${genre.id}`}
               className="group p-6 border border-[var(--border-default)] rounded-[2px] hover:border-[var(--color-primary)] hover:bg-[rgba(220,20,60,0.05)] transition-all duration-200 no-underline"
             >
               <h3 className="font-['Playfair_Display'] text-white text-[16px] font-semibold group-hover:text-[var(--color-primary)] transition-colors">

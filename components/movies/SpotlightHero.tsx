@@ -194,9 +194,8 @@ export default function SpotlightHero({
       {movies.length > 1 && (
         <div className="absolute bottom-8 right-8 md:right-16 z-20 flex gap-2">
           {movies.map((_, i) => (
-            <div className="flex items-center justify-center min-w-[44px] min-h-[44px]">
+            <div key={i} className="flex items-center justify-center min-w-[44px] min-h-[44px]">
               <button
-                key={i}
                 onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i) }}
                 className="transition-all duration-300"
                 style={{

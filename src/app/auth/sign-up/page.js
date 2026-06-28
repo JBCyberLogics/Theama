@@ -10,7 +10,7 @@ export default function SignUpPage() {
 
   const handleSubmit = async (data) => {
     try {
-      const res = await fetch('/api/auth/sign-up', {
+      const res = await fetch('https://theama.onrender.com/api/auth/sign-up', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
