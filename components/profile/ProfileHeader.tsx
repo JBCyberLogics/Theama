@@ -1,4 +1,5 @@
 import type { UserProfile } from '@/types/user'
+import UserAvatarIcon from '@/components/ui/icons/UserAvatarIcon'
 
 interface ProfileHeaderProps {
   profile: UserProfile | null
@@ -14,11 +15,8 @@ export default function ProfileHeader({ profile }: ProfileHeaderProps) {
         {profile?.avatar_url ? (
           <img src={profile.avatar_url} alt="" className="w-full h-full object-cover" />
         ) : (
-          <div className="w-full h-full bg-[#1A0808] flex items-center justify-center">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="#6B4B4B" stroke="none">
-              <circle cx="12" cy="8" r="4" />
-              <path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8" />
-            </svg>
+          <div className="w-full h-full bg-[var(--surface-theater)] flex items-center justify-center">
+            <UserAvatarIcon size={32} />
           </div>
         )}
       </div>
@@ -27,7 +25,7 @@ export default function ProfileHeader({ profile }: ProfileHeaderProps) {
           {profile?.full_name || 'Audience Member'}
         </h1>
         {profile?.bio && (
-          <p className="font-['Cormorant_Garamond'] italic text-[#B38080] text-[16px] mt-1">
+          <p className="font-['Cormorant_Garamond'] italic text-[var(--text-muted)] text-[16px] mt-1">
             {profile.bio}
           </p>
         )}

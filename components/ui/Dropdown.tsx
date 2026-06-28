@@ -42,8 +42,8 @@ export default function Dropdown({ trigger, options, onSelect, align = 'left' }:
           className="absolute top-full mt-2 z-50 min-w-[160px] py-2"
           style={{
             [align]: 0,
-            backgroundColor: '#141414',
-            border: '1px solid #1A1A1A',
+            backgroundColor: 'var(--surface-elevated)',
+            border: '1px solid var(--border-default)',
             borderRadius: '2px',
             boxShadow: '0 8px 32px rgba(0,0,0,0.4)',
           }}
@@ -52,7 +52,7 @@ export default function Dropdown({ trigger, options, onSelect, align = 'left' }:
             <button
               key={opt.value}
               onClick={() => { onSelect(opt.value); setOpen(false) }}
-              className="w-full flex items-center gap-3 px-4 py-2.5 text-[14px] text-[#B3B3B3] hover:text-white hover:bg-[rgba(220,20,60,0.05)] transition-colors text-left"
+              className="w-full flex items-center gap-3 px-4 py-2.5 text-[14px] text-[var(--text-secondary)] hover:text-white hover:bg-[rgba(220,20,60,0.05)] transition-colors text-left"
             >
               {opt.icon && <span className="w-4 h-4 flex items-center">{opt.icon}</span>}
               {opt.label}

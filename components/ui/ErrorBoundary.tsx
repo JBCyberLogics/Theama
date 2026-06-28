@@ -33,23 +33,23 @@ export default class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBo
       return (
         <div
           className="flex flex-col items-center justify-center p-10 text-center"
-          style={{ minHeight: '300px', backgroundColor: '#0A0A0A' }}
+          style={{ minHeight: '300px', backgroundColor: 'var(--surface-base)' }}
         >
           <svg width="48" height="48" viewBox="0 0 32 32" fill="none" className="mb-4">
-            <circle cx="16" cy="16" r="15" stroke="#DC143C" strokeWidth="1.5" fill="none" opacity="0.5" />
-            <path d="M16 10v6M16 20v2" stroke="#DC143C" strokeWidth="2" strokeLinecap="round" />
+            <circle cx="16" cy="16" r="15" stroke="var(--color-primary)" strokeWidth="1.5" fill="none" opacity="0.5" />
+            <path d="M16 10v6M16 20v2" stroke="var(--color-primary)" strokeWidth="2" strokeLinecap="round" />
           </svg>
           <h3 className="font-['Playfair_Display'] text-white text-[20px] font-semibold mb-2">
             Something Went Wrong
           </h3>
-          <p className="font-['Cormorant_Garamond'] italic text-[#B38080] text-[14px] mb-6 max-w-[400px]">
+          <p className="font-['Cormorant_Garamond'] italic text-[var(--text-muted)] text-[14px] mb-6 max-w-[400px]">
             The performance has encountered an unexpected intermission.
           </p>
           <button
             onClick={() => this.setState({ hasError: false, error: null })}
             className="h-[42px] px-6 text-[13px] font-medium tracking-[0.1em] text-white transition-all duration-300"
             style={{
-              background: 'linear-gradient(135deg, #8B0000, #DC143C)',
+              background: 'linear-gradient(135deg, var(--color-deep), var(--color-primary))',
               borderRadius: '2px',
             }}
           >
@@ -57,12 +57,12 @@ export default class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBo
           </button>
           {this.state.error && (
             <details className="mt-4 max-w-[500px]">
-              <summary className="text-[#6B4B4B] text-[12px] cursor-pointer hover:text-[#808080]">
+              <summary className="text-[var(--text-muted-2)] text-[12px] cursor-pointer hover:text-[var(--text-muted-3)]">
                 Technical details
               </summary>
               <pre className="mt-2 p-3 text-left text-[11px] overflow-auto" style={{
                 backgroundColor: 'rgba(255,255,255,0.02)',
-                color: '#B38080',
+                color: 'var(--text-muted)',
                 border: '1px solid rgba(255,255,255,0.04)',
                 borderRadius: '2px',
               }}>

@@ -51,24 +51,24 @@ export default function EmptyState({ type, ctaHref, onRetry }: EmptyStateProps) 
   const href = ctaHref || config.ctaHref
 
   return (
-    <div className="flex flex-col items-center justify-center py-24 px-6 text-center">
-      <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#3D0000" strokeWidth="1" className="mb-8">
+    <div className="flex flex-col items-center justify-center py-16 sm:py-24 px-6 text-center">
+      <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--border-subtle)" strokeWidth="1" className="mb-8">
         <rect x="2" y="2" width="20" height="20" rx="2" />
         <path d="M8 2v20M16 2v20M2 8h20M2 16h20" />
       </svg>
 
-      <h2 className="font-['Playfair_Display'] text-[24px] text-white font-bold mb-3 text-balance">
+      <h2 className="font-['Playfair_Display'] text-[20px] sm:text-[24px] text-white font-bold mb-3 text-balance">
         {config.headline}
       </h2>
 
-      <p className="font-['Cormorant_Garamond'] text-[18px] text-[#B38080] italic max-w-[440px] mb-8">
+      <p className="font-['Cormorant_Garamond'] text-[18px] text-[var(--text-muted)] italic max-w-[440px] mb-8">
         {config.subheadline}
       </p>
 
       {onRetry ? (
         <button
           onClick={onRetry}
-          className="h-[48px] px-8 flex items-center text-[14px] font-medium tracking-[0.1em] text-white bg-gradient-to-r from-[#8B0000] to-[#DC143C] hover:from-[#DC143C] hover:to-[#FF1744] transition-all duration-200 shadow-[0_4px_15px_rgba(220,20,60,0.2)]"
+          className="h-[48px] px-8 flex items-center text-[14px] font-medium tracking-[0.1em] text-white bg-gradient-to-r from-[var(--color-deep)] to-[var(--color-primary)] hover:from-[var(--color-primary)] hover:to-[var(--color-error)] transition-all duration-200 shadow-[0_4px_15px_rgba(220,20,60,0.2)]"
           style={{ borderRadius: '2px' }}
         >
           {config.cta}
@@ -76,7 +76,7 @@ export default function EmptyState({ type, ctaHref, onRetry }: EmptyStateProps) 
       ) : (
         <Link
           href={href}
-          className="h-[48px] px-8 inline-flex items-center text-[14px] font-medium tracking-[0.1em] text-white bg-gradient-to-r from-[#8B0000] to-[#DC143C] hover:from-[#DC143C] hover:to-[#FF1744] transition-all duration-200 no-underline shadow-[0_4px_15px_rgba(220,20,60,0.2)]"
+          className="h-[48px] px-8 inline-flex items-center text-[14px] font-medium tracking-[0.1em] text-white bg-gradient-to-r from-[var(--color-deep)] to-[var(--color-primary)] hover:from-[var(--color-primary)] hover:to-[var(--color-error)] transition-all duration-200 no-underline shadow-[0_4px_15px_rgba(220,20,60,0.2)]"
           style={{ borderRadius: '2px' }}
         >
           {config.cta}

@@ -7,25 +7,25 @@ export default function TheaterBadge({ text, variant = 'genre' }: TheaterBadgePr
   const styles: Record<string, React.CSSProperties> = {
     rating: {
       backgroundColor: 'rgba(220,20,60,0.15)',
-      color: '#DC143C',
+      color: 'var(--color-primary)',
       border: '1px solid rgba(220,20,60,0.3)',
       fontSize: '12px',
     },
     year: {
       backgroundColor: 'rgba(255,255,255,0.05)',
-      color: '#B3B3B3',
+      color: 'var(--text-secondary)',
       border: '1px solid rgba(255,255,255,0.08)',
       fontSize: '12px',
     },
     genre: {
       backgroundColor: 'rgba(255,255,255,0.04)',
-      color: '#808080',
+      color: 'var(--text-muted-3)',
       border: '1px solid rgba(255,255,255,0.06)',
       fontSize: '11px',
     },
     gold: {
       backgroundColor: 'rgba(201,168,76,0.1)',
-      color: '#C9A84C',
+      color: 'var(--color-gold)',
       border: '1px solid rgba(201,168,76,0.2)',
       fontSize: '11px',
     },

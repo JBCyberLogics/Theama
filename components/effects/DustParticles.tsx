@@ -11,7 +11,7 @@ interface DustParticlesProps {
 
 export default function DustParticles({
   count = 60,
-  color = '#DC143C',
+  color = 'var(--color-primary)',
   speed = 0.3,
   className = '',
 }: DustParticlesProps) {

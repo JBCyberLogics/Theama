@@ -67,6 +67,8 @@ function staticStrategy(request) {
         caches.open(STATIC_CACHE).then((cache) => cache.put(request, clone))
       }
       return response
+    }).catch(() => {
+      return caches.match(request)
     })
   })
 }

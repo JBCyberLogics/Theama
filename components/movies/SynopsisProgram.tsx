@@ -13,7 +13,7 @@ export default function SynopsisProgram({ overview, tagline }: SynopsisProgramPr
       </h3>
 
       {tagline && (
-        <p className="font-['Cormorant_Garamond'] italic text-[#C9A84C] text-[18px] mb-4 leading-relaxed">
+        <p className="font-['Cormorant_Garamond'] italic text-[var(--color-gold)] text-[18px] mb-4 leading-relaxed">
           "{tagline}"
         </p>
       )}
@@ -21,13 +21,13 @@ export default function SynopsisProgram({ overview, tagline }: SynopsisProgramPr
       <div className="flex gap-4">
         <span
           className="font-['Playfair_Display'] text-[48px] font-bold leading-none"
-          style={{ color: '#C9A84C', float: 'left', lineHeight: 0.8, marginTop: '4px' }}
+          style={{ color: 'var(--color-gold)', float: 'left', lineHeight: 0.8, marginTop: '4px' }}
         >
           {overview.charAt(0)}
         </span>
         <p
           className="font-['Cormorant_Garamond'] text-[17px] leading-relaxed"
-          style={{ color: '#B3B3B3' }}
+          style={{ color: 'var(--text-secondary)' }}
         >
           {overview.slice(1)}
         </p>

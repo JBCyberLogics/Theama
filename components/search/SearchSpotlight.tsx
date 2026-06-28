@@ -3,6 +3,7 @@ import { useRouter } from 'next/navigation'
 import { useDebounce } from '@/hooks/useDebounce'
 import { api } from '@/lib/apiClient'
 import type { Movie, MovieListResponse } from '@/types/movie'
+import SearchIcon from '@/components/ui/icons/SearchIcon'
 
 interface SearchSpotlightProps {
   placeholder?: string
@@ -51,20 +52,11 @@ export default function SearchSpotlight({ placeholder = 'Search for a film, acto
     <div className="relative w-full max-w-[640px] mx-auto">
       <form onSubmit={handleSubmit} role="search">
         <div className="relative">
-          <svg
+          <SearchIcon
             className="absolute left-5 top-1/2 -translate-y-1/2 transition-colors duration-200"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            style={{ color: focused ? '#DC143C' : '#6B4B4B' }}
-          >
-            <circle cx="11" cy="11" r="8" />
-            <path d="M21 21l-4.35-4.35" />
-          </svg>
+            size={18}
+            stroke={focused ? 'var(--color-primary)' : 'var(--text-muted-2)'}
+          />
 
           <input
             ref={inputRef}
@@ -81,9 +73,9 @@ export default function SearchSpotlight({ placeholder = 'Search for a film, acto
               paddingLeft: '52px',
               paddingRight: '20px',
               backgroundColor: focused ? 'rgba(20,8,8,0.95)' : 'rgba(10,5,5,0.8)',
-              border: focused ? '2px solid #DC143C' : '1px solid #3D0000',
+              border: focused ? '2px solid var(--color-primary)' : '1px solid var(--border-subtle)',
               borderRadius: '2px',
-              color: '#FFFFFF',
+              color: 'var(--text-primary)',
               fontSize: '16px',
               outline: 'none',
               transition: 'all 300ms ease-out',
@@ -98,8 +90,8 @@ export default function SearchSpotlight({ placeholder = 'Search for a film, acto
         <div
           className="absolute top-full left-0 right-0 mt-2 z-50 overflow-hidden"
           style={{
-            backgroundColor: '#141414',
-            border: '1px solid #1A1A1A',
+            backgroundColor: 'var(--surface-elevated)',
+            border: '1px solid var(--border-default)',
             borderRadius: '2px',
             boxShadow: '0 8px 32px rgba(0,0,0,0.4)',
           }}
@@ -109,10 +101,9 @@ export default function SearchSpotlight({ placeholder = 'Search for a film, acto
               key={movie.id}
               onClick={() => handleSelect(movie.id)}
               className="w-full flex items-center gap-4 px-5 py-3 text-left transition-colors"
-              onMouseEnter={e => { e.currentTarget.style.backgroundColor = 'rgba(220,20,60,0.05)' }}
-              onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent' }}
+
             >
-              <div className="w-[36px] h-[54px] flex-shrink-0 overflow-hidden rounded-[2px] bg-[#1A0808]">
+              <div className="w-[36px] h-[54px] flex-shrink-0 overflow-hidden rounded-[2px] bg-[var(--surface-theater)]">
                 {movie.poster_path && (
                   <img
                     src={`https://image.tmdb.org/t/p/w92${movie.poster_path}`}
@@ -123,7 +114,7 @@ export default function SearchSpotlight({ placeholder = 'Search for a film, acto
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-white text-[14px] font-medium truncate">{movie.title}</p>
-                <p className="text-[#808080] text-[12px] truncate mt-0.5">{movie.release_date?.slice(0, 4) || ''}</p>
+                <p className="text-[var(--text-muted-3)] text-[12px] truncate mt-0.5">{movie.release_date?.slice(0, 4) || ''}</p>
               </div>
             </button>
           ))}

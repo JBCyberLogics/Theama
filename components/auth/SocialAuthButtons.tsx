@@ -10,18 +10,11 @@ export default function SocialAuthButtons({ onGoogleAuth }: SocialAuthButtonsPro
         onClick={onGoogleAuth}
         className="w-[48px] h-[48px] flex items-center justify-center transition-all duration-200"
         style={{
-          border: '1px solid #3D0000',
+          border: '1px solid var(--border-subtle)',
           borderRadius: '2px',
           backgroundColor: 'transparent',
         }}
-        onMouseEnter={e => {
-          e.currentTarget.style.borderColor = '#DC143C'
-          e.currentTarget.style.backgroundColor = 'rgba(220,20,60,0.08)'
-        }}
-        onMouseLeave={e => {
-          e.currentTarget.style.borderColor = '#3D0000'
-          e.currentTarget.style.backgroundColor = 'transparent'
-        }}
+
         aria-label="Sign in with Google"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none">

@@ -1,5 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700;900&display=swap');
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #DC143C;
+  --color-deep: #8B0000;
+  --color-gold: #C9A84C;
+  --color-error: #FF1744;
+  --color-success: #22C55E;
+  --surface-base: #0A0A0A;
+  --surface-elevated: #141414;
+  --surface-off: #0A0505;
+  --surface-theater: #1A0808;
+  --text-primary: #FFFFFF;
+  --text-secondary: #B3B3B3;
+  --text-muted: #B38080;
+  --text-muted-2: #6B4B4B;
+  --text-muted-3: #808080;
+  --border-default: #1A1A1A;
+  --border-subtle: #3D0000;
+  --navbar-height: 72px;
+  --sidebar-width: 64px;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -7,7 +32,26 @@
 body {
   margin: 0;
   padding: 0;
-  background: #0A0A0A;
-  color: #FFFFFF;
+  background: var(--surface-base);
+  color: var(--text-primary);
   font-family: 'Inter', sans-serif;
+}
+
+@layer components {
+  .golden-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--color-gold);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .golden-divider::before,
+  .golden-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border-subtle);
+  }
 }

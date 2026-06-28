@@ -1,4 +1,6 @@
 import './globals.css'
+import { AuthProvider } from '@/context/AuthContext'
+import StageLayout from '@/components/layout/StageLayout'
 
 export const metadata = {
   title: 'Theama - Enter the Spectacle',
@@ -11,7 +13,11 @@ export default function RootLayout({ children }) {
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
       </head>
-      <body style={{ margin: 0, background: '#0A0A0A' }}>{children}</body>
+      <body style={{ margin: 0, background: 'var(--surface-base)' }}>
+        <AuthProvider>
+          <StageLayout>{children}</StageLayout>
+        </AuthProvider>
+      </body>
     </html>
   )
 }

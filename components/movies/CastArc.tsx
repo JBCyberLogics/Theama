@@ -1,5 +1,6 @@
 import type { CastMember } from '@/types/movie'
 import { getProfileUrl } from '@/lib/imageUrlBuilder'
+import UserAvatarIcon from '@/components/ui/icons/UserAvatarIcon'
 
 interface CastArcProps {
   cast: CastMember[]
@@ -15,7 +16,7 @@ export default function CastArc({ cast }: CastArcProps) {
       </h3>
 
       <div
-        className="flex gap-5 overflow-x-auto pb-4"
+        className="flex gap-5 overflow-x-auto pb-4 scrollbar-hide"
         style={{ scrollSnapType: 'x mandatory' }}
       >
         {cast.slice(0, 10).map(member => (
@@ -25,7 +26,7 @@ export default function CastArc({ cast }: CastArcProps) {
             style={{ width: '90px', scrollSnapAlign: 'start' }}
           >
             <div
-              className="w-[80px] h-[80px] overflow-hidden"
+              className="w-[72px] sm:w-[80px] h-[72px] sm:h-[80px] overflow-hidden"
               style={{
                 borderRadius: '50%',
                 border: '2px solid rgba(201,168,76,0.3)',
@@ -38,18 +39,15 @@ export default function CastArc({ cast }: CastArcProps) {
                   className="w-full h-full object-cover"
                 />
               ) : (
-                <div className="w-full h-full bg-[#1A0808] flex items-center justify-center">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="#6B4B4B" stroke="none">
-                    <circle cx="12" cy="8" r="4" />
-                    <path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8" />
-                  </svg>
+                <div className="w-full h-full bg-[var(--surface-theater)] flex items-center justify-center">
+                  <UserAvatarIcon size={24} />
                 </div>
               )}
             </div>
             <span className="text-white text-[12px] font-medium text-center leading-tight">
               {member.name}
             </span>
-            <span className="text-[#808080] text-[11px] text-center leading-tight">
+            <span className="text-[var(--text-muted-3)] text-[11px] text-center leading-tight">
               {member.character}
             </span>
           </div>

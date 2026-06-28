@@ -1,3 +1,4 @@
+import StarIcon from '@/components/ui/icons/StarIcon'
 interface RoseRatingProps {
   value: number
   max?: number
@@ -31,20 +32,12 @@ export default function RoseRating({
             aria-label={interactive ? `${i + 1} star` : undefined}
             style={{ padding: 0, background: 'none', border: 'none', lineHeight: 0 }}
           >
-            <svg
-              width={pixelSize}
-              height={pixelSize}
-              viewBox="0 0 24 24"
-              fill={filled ? '#DC143C' : 'none'}
-              stroke={filled ? '#DC143C' : '#3D0000'}
-              strokeWidth="1.5"
-              style={{
-                transition: 'all 200ms ease-out',
-                filter: filled ? 'drop-shadow(0 0 4px rgba(220,20,60,0.4))' : 'none',
-              }}
-            >
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
+            <StarIcon
+              size={pixelSize}
+              fill={filled ? 'var(--color-primary)' : 'none'}
+              stroke={filled ? 'var(--color-primary)' : 'var(--border-subtle)'}
+              strokeWidth={1.5}
+            />
           </button>
         )
       })}

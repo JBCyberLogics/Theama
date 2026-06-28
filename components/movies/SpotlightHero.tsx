@@ -1,9 +1,12 @@
+'use client'
+
 import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import type { Movie } from '@/types/movie'
 import { getPosterUrl, getBackdropFallback } from '@/lib/imageUrlBuilder'
 import { formatYear, formatRating } from '@/lib/formatters'
+import StarIcon from '@/components/ui/icons/StarIcon'
 
 interface SpotlightHeroProps {
   movies: Movie[]
@@ -42,14 +45,14 @@ export default function SpotlightHero({
       <div
         className="relative w-full overflow-hidden"
         style={{
-          height: '90vh',
-          minHeight: '500px',
+          height: '90dvh',
+          minHeight: 'clamp(400px, 80dvh, 500px)',
           maxHeight: '900px',
-          background: '#0A0A0A',
+          background: 'var(--surface-base)',
         }}
       >
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="animate-shimmer w-full h-full" style={{ backgroundColor: '#1A0808' }} />
+          <div className="animate-shimmer w-full h-full" style={{ backgroundColor: 'var(--surface-theater)' }} />
         </div>
       </div>
     )
@@ -61,8 +64,8 @@ export default function SpotlightHero({
     <div
       className="relative w-full overflow-hidden"
       style={{
-        height: '90vh',
-        minHeight: '500px',
+        height: '90dvh',
+        minHeight: 'clamp(400px, 80dvh, 500px)',
         maxHeight: '900px',
       }}
     >
@@ -89,14 +92,14 @@ export default function SpotlightHero({
         background: 'radial-gradient(ellipse at top center, rgba(220,20,60,0.08) 0%, transparent 70%)',
       }} />
       <div className="absolute inset-0 pointer-events-none" style={{
-        background: 'linear-gradient(to bottom, transparent 40%, #0A0A0A 100%)',
+        background: 'linear-gradient(to bottom, transparent 40%, var(--surface-base) 100%)',
       }} />
       <div className="absolute inset-0 pointer-events-none" style={{
         background: 'linear-gradient(to right, rgba(10,10,10,0.9) 0%, transparent 50%)',
       }} />
 
       {/* Content */}
-      <div className="relative z-10 h-full flex flex-col justify-end pb-24 px-8 md:px-16 max-w-[1440px] mx-auto">
+      <div className="relative z-10 h-full flex flex-col justify-end pb-16 sm:pb-24 px-6 md:px-16 max-w-[1440px] mx-auto">
         <motion.div
           key={movie.id + '-content'}
           initial={{ opacity: 0, y: 30 }}
@@ -121,7 +124,7 @@ export default function SpotlightHero({
               className="font-['Cormorant_Garamond'] italic mb-4"
               style={{
                 fontSize: 'clamp(16px, 2vw, 22px)',
-                color: '#B38080',
+                color: 'var(--text-muted)',
               }}
             >
               {movie.tagline}
@@ -130,16 +133,14 @@ export default function SpotlightHero({
 
           <div className="flex items-center gap-4 mb-5">
             <div className="flex items-center gap-1.5">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="#DC143C" stroke="none">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-              </svg>
+              <StarIcon size={18} />
               <span className="text-white text-[14px] font-medium">
                 {formatRating(movie.vote_average)}
               </span>
             </div>
 
             {movie.release_date && (
-              <span className="text-[#B3B3B3] text-[14px]">
+              <span className="text-[var(--text-secondary)] text-[14px]">
                 {formatYear(movie.release_date)}
               </span>
             )}
@@ -149,7 +150,7 @@ export default function SpotlightHero({
                 key={g.id}
                 className="text-[12px] px-2.5 py-1"
                 style={{
-                  color: '#808080',
+                  color: 'var(--text-muted-3)',
                   border: '1px solid rgba(255,255,255,0.06)',
                   borderRadius: '2px',
                 }}
@@ -164,18 +165,11 @@ export default function SpotlightHero({
               href={`/film/${movie.id}`}
               className="h-[52px] px-8 inline-flex items-center text-[14px] font-medium tracking-[0.1em] text-white no-underline transition-all duration-300"
               style={{
-                background: 'linear-gradient(135deg, #8B0000, #DC143C)',
+                background: 'linear-gradient(135deg, var(--color-deep), var(--color-primary))',
                 borderRadius: '2px',
                 boxShadow: '0 4px 15px rgba(220,20,60,0.2)',
               }}
-              onMouseEnter={e => {
-                e.currentTarget.style.background = 'linear-gradient(135deg, #DC143C, #FF1744)'
-                e.currentTarget.style.boxShadow = '0 6px 25px rgba(220,20,60,0.4)'
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.background = 'linear-gradient(135deg, #8B0000, #DC143C)'
-                e.currentTarget.style.boxShadow = '0 4px 15px rgba(220,20,60,0.2)'
-              }}
+
             >
               ENTER THE SPECTACLE
             </Link>
@@ -184,18 +178,11 @@ export default function SpotlightHero({
               href={`/film/${movie.id}`}
               className="h-[52px] px-6 inline-flex items-center text-[14px] font-medium tracking-[0.1em] no-underline transition-all duration-200"
               style={{
-                color: '#B38080',
+                color: 'var(--text-muted)',
                 border: '1px solid rgba(179,128,128,0.3)',
                 borderRadius: '2px',
               }}
-              onMouseEnter={e => {
-                e.currentTarget.style.color = '#FFFFFF'
-                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)'
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.color = '#B38080'
-                e.currentTarget.style.borderColor = 'rgba(179,128,128,0.3)'
-              }}
+
             >
               MORE INFO
             </Link>
@@ -207,18 +194,20 @@ export default function SpotlightHero({
       {movies.length > 1 && (
         <div className="absolute bottom-8 right-8 md:right-16 z-20 flex gap-2">
           {movies.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i) }}
-              className="transition-all duration-300"
-              style={{
-                width: i === current ? '28px' : '8px',
-                height: '8px',
-                borderRadius: '4px',
-                backgroundColor: i === current ? '#DC143C' : 'rgba(255,255,255,0.2)',
-              }}
-              aria-label={`Go to slide ${i + 1}`}
-            />
+            <div className="flex items-center justify-center min-w-[44px] min-h-[44px]">
+              <button
+                key={i}
+                onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i) }}
+                className="transition-all duration-300"
+                style={{
+                  width: i === current ? '28px' : '8px',
+                  height: '8px',
+                  borderRadius: '4px',
+                  backgroundColor: i === current ? 'var(--color-primary)' : 'rgba(255,255,255,0.2)',
+                }}
+                aria-label={`Go to slide ${i + 1}`}
+              />
+            </div>
           ))}
         </div>
       )}

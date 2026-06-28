@@ -1,8 +1,11 @@
+'use client'
+
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import type { Movie } from '@/types/movie'
 import { getPosterFallback } from '@/lib/imageUrlBuilder'
 import { formatYear, formatRating } from '@/lib/formatters'
+import StarIcon from '@/components/ui/icons/StarIcon'
 
 interface PlaybillCardProps {
   movie: Movie
@@ -54,13 +57,11 @@ export default function PlaybillCard({ movie, index = 0, layout = 'grid' }: Play
             </h3>
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-1">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="#DC143C" stroke="none">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                </svg>
+                <StarIcon size={12} />
                 <span className="text-white text-[12px] font-medium">{formatRating(movie.vote_average)}</span>
               </div>
               {movie.release_date && (
-                <span className="text-[#808080] text-[12px]">{formatYear(movie.release_date)}</span>
+                <span className="text-[var(--text-muted-3)] text-[12px]">{formatYear(movie.release_date)}</span>
               )}
             </div>
           </div>
@@ -74,16 +75,14 @@ export default function PlaybillCard({ movie, index = 0, layout = 'grid' }: Play
                 borderRadius: '2px',
               }}
             >
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="white" stroke="none">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-              </svg>
+              <StarIcon size={10} fill="white" />
               <span className="text-white text-[11px] font-bold">{formatRating(movie.vote_average)}</span>
             </div>
           </div>
 
           {/* Crimson border accent on hover */}
           <div
-            className="absolute inset-0 border border-transparent group-hover:border-[#DC143C] transition-all duration-300 ease-out pointer-events-none"
+            className="absolute inset-0 border border-transparent group-hover:border-[var(--color-primary)] transition-all duration-300 ease-out pointer-events-none"
             style={{ borderRadius: '4px' }}
           />
         </div>
@@ -93,7 +92,7 @@ export default function PlaybillCard({ movie, index = 0, layout = 'grid' }: Play
             <h3 className="font-['Playfair_Display'] text-white text-[16px] font-semibold truncate">
               {movie.title}
             </h3>
-            <p className="text-[#808080] text-[13px] mt-1 line-clamp-2">
+            <p className="text-[var(--text-muted-3)] text-[13px] mt-1 line-clamp-2">
               {movie.overview}
             </p>
           </div>

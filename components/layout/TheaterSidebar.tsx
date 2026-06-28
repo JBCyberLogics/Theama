@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import type { TheaterSidebarProps, SidebarItem } from '@/types/components'
+import UserAvatarIcon from '@/components/ui/icons/UserAvatarIcon'
 
 const SIDEBAR_ICONS: Record<string, React.ReactNode> = {
   spotlight_beam: (
@@ -30,10 +31,7 @@ const SIDEBAR_ICONS: Record<string, React.ReactNode> = {
     </svg>
   ),
   audience_member: (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-      <circle cx="12" cy="8" r="4" />
-      <path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8" />
-    </svg>
+    <UserAvatarIcon size={20} stroke="currentColor" strokeWidth={1.5} />
   ),
 }
 
@@ -57,10 +55,11 @@ export default function TheaterSidebar({ items = DEFAULT_ITEMS }: TheaterSidebar
 
   return (
     <nav
-      className="fixed left-0 top-[72px] bottom-0 z-40 bg-[#0A0505] transition-all duration-300 ease-out hidden md:block"
+      className="fixed left-0 top-[72px] bottom-0 z-40 bg-[var(--surface-off)] transition-all duration-300 ease-out hidden md:block"
       style={{ width: expanded ? '220px' : '64px' }}
       onMouseEnter={() => setExpanded(true)}
       onMouseLeave={() => setExpanded(false)}
+      onClick={() => setExpanded(!expanded)}
     >
       <div className="flex flex-col gap-1 py-4 px-2">
         {items.map(item => {
@@ -73,24 +72,15 @@ export default function TheaterSidebar({ items = DEFAULT_ITEMS }: TheaterSidebar
               style={{
                 backgroundColor: active ? 'rgba(220,20,60,0.1)' : 'transparent',
                 borderRadius: '2px',
-                borderLeft: active ? '3px solid #DC143C' : '3px solid transparent',
+                borderLeft: active ? '3px solid var(--color-primary)' : '3px solid transparent',
               }}
-              onMouseEnter={(e) => {
-                if (!active) {
-                  e.currentTarget.style.backgroundColor = 'rgba(220,20,60,0.05)'
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (!active) {
-                  e.currentTarget.style.backgroundColor = 'transparent'
-                }
-              }}
+
               title={expanded ? undefined : item.label}
             >
               <span
                 className="flex-shrink-0 transition-colors duration-200"
                 style={{
-                  color: active ? '#DC143C' : '#6B4B4B',
+                  color: active ? 'var(--color-primary)' : 'var(--text-muted-2)',
                   filter: active ? 'drop-shadow(0 0 10px rgba(220,20,60,0.2))' : 'none',
                 }}
               >
@@ -99,7 +89,7 @@ export default function TheaterSidebar({ items = DEFAULT_ITEMS }: TheaterSidebar
               <span
                 className="text-[14px] font-medium whitespace-nowrap overflow-hidden transition-all duration-300"
                 style={{
-                  color: active ? '#DC143C' : '#B3B3B3',
+                  color: active ? 'var(--color-primary)' : 'var(--text-secondary)',
                   opacity: expanded ? 1 : 0,
                   width: expanded ? 'auto' : 0,
                 }}
@@ -109,7 +99,7 @@ export default function TheaterSidebar({ items = DEFAULT_ITEMS }: TheaterSidebar
 
               {!expanded && (
                 <div
-                  className="absolute left-[60px] top-1/2 -translate-y-1/2 px-3 py-1.5 bg-[#141414] border border-[#1A1A1A] text-[13px] text-white whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none z-50"
+                  className="absolute left-[60px] top-1/2 -translate-y-1/2 px-3 py-1.5 bg-[var(--surface-elevated)] border border-[var(--border-default)] text-[13px] text-white whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none z-50"
                   style={{ borderRadius: '2px' }}
                 >
                   {item.label}

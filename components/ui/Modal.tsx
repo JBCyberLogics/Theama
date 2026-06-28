@@ -1,5 +1,6 @@
 import { useEffect, useRef, type ReactNode } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import CloseIcon from '@/components/ui/icons/CloseIcon'
 
 interface ModalProps {
   isOpen: boolean
@@ -49,25 +50,23 @@ export default function Modal({ isOpen, onClose, children, title }: ModalProps) 
             transition={{ duration: 0.25, ease: 'easeOut' }}
             className="relative w-full max-w-[500px]"
             style={{
-              backgroundColor: '#141414',
-              border: '1px solid #1A1A1A',
+              backgroundColor: 'var(--surface-elevated)',
+              border: '1px solid var(--border-default)',
               borderRadius: '4px',
               boxShadow: '0 0 60px rgba(220,20,60,0.15)',
             }}
           >
             {title && (
-              <div className="flex items-center justify-between px-6 py-4 border-b border-[#1A1A1A]">
+              <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--border-default)]">
                 <h3 className="font-['Playfair_Display'] text-[18px] text-white font-semibold">
                   {title}
                 </h3>
                 <button
                   onClick={onClose}
-                  className="w-8 h-8 flex items-center justify-center text-[#6B4B4B] hover:text-white transition-colors"
+                  className="w-8 h-8 flex items-center justify-center text-[var(--text-muted-2)] hover:text-white transition-colors"
                   aria-label="Close"
                 >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                    <path d="M18 6L6 18M6 6l12 12" />
-                  </svg>
+                  <CloseIcon size={16} stroke="currentColor" strokeWidth={2} />
                 </button>
               </div>
             )}

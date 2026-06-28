@@ -2,59 +2,17 @@ import { useState, useEffect, useCallback } from 'react'
 import type { Movie, MovieListResponse, Genre } from '@/types/movie'
 import { api } from '@/lib/apiClient'
 
-export function useTrending(timeWindow: 'day' | 'week' = 'week') {
+export function useMovieList(endpoint: string, params?: Record<string, string | number | boolean | undefined>) {
   const [movies, setMovies] = useState<Movie[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     setLoading(true)
-    api.get<MovieListResponse>('/movies/trending', { time_window: timeWindow })
+    api.get<MovieListResponse>(endpoint, params)
       .then(res => setMovies(res.results))
       .catch(() => setMovies([]))
       .finally(() => setLoading(false))
-  }, [timeWindow])
-
-  return { movies, loading }
-}
-
-export function useNowPlaying() {
-  const [movies, setMovies] = useState<Movie[]>([])
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    api.get<MovieListResponse>('/movies/now-playing')
-      .then(res => setMovies(res.results))
-      .catch(() => setMovies([]))
-      .finally(() => setLoading(false))
-  }, [])
-
-  return { movies, loading }
-}
-
-export function useTopRated() {
-  const [movies, setMovies] = useState<Movie[]>([])
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    api.get<MovieListResponse>('/movies/top-rated')
-      .then(res => setMovies(res.results))
-      .catch(() => setMovies([]))
-      .finally(() => setLoading(false))
-  }, [])
-
-  return { movies, loading }
-}
-
-export function useUpcoming() {
-  const [movies, setMovies] = useState<Movie[]>([])
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    api.get<MovieListResponse>('/movies/upcoming')
-      .then(res => setMovies(res.results))
-      .catch(() => setMovies([]))
-      .finally(() => setLoading(false))
-  }, [])
+  }, [endpoint, params])
 
   return { movies, loading }
 }

@@ -34,7 +34,7 @@ export default function CuratedReveal({ title, subtitle, movies, seeAllLink, loa
             {title}
           </h2>
           {subtitle && (
-            <p className="font-['Cormorant_Garamond'] italic text-[#B38080] text-[16px] mt-1">
+            <p className="font-['Cormorant_Garamond'] italic text-[var(--text-muted)] text-[16px] mt-1">
               {subtitle}
             </p>
           )}
@@ -44,9 +44,8 @@ export default function CuratedReveal({ title, subtitle, movies, seeAllLink, loa
           <Link
             href={seeAllLink}
             className="text-[13px] font-medium tracking-[0.1em] no-underline transition-colors flex items-center gap-1.5"
-            style={{ color: '#808080' }}
-            onMouseEnter={e => { e.currentTarget.style.color = '#DC143C' }}
-            onMouseLeave={e => { e.currentTarget.style.color = '#808080' }}
+            style={{ color: 'var(--text-muted-3)' }}
+
           >
             SEE ALL
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -84,10 +83,10 @@ export default function CuratedReveal({ title, subtitle, movies, seeAllLink, loa
 
         {/* Gradient fade on edges */}
         <div className="absolute left-0 top-0 bottom-0 w-12 pointer-events-none" style={{
-          background: 'linear-gradient(to right, #0A0A0A 0%, transparent 100%)',
+          background: 'linear-gradient(to right, var(--surface-base) 0%, transparent 100%)',
         }} />
         <div className="absolute right-0 top-0 bottom-0 w-12 pointer-events-none" style={{
-          background: 'linear-gradient(to left, #0A0A0A 0%, transparent 100%)',
+          background: 'linear-gradient(to left, var(--surface-base) 0%, transparent 100%)',
         }} />
       </div>
     </section>

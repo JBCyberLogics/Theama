@@ -3,9 +3,9 @@ import Link from 'next/link'
 export default function TheaterCTA() {
   return (
     <section
-      className="relative overflow-hidden py-20 px-6 text-center"
+      className="relative overflow-hidden py-16 sm:py-20 px-6 text-center"
       style={{
-        background: 'linear-gradient(to bottom, #0A0A0A 0%, #1A0808 50%, #0A0A0A 100%)',
+        background: 'linear-gradient(to bottom, var(--surface-base) 0%, var(--surface-theater) 50%, var(--surface-base) 100%)',
       }}
     >
       {/* Spotlight beam */}
@@ -29,42 +29,35 @@ export default function TheaterCTA() {
 
         <p
           className="font-['Cormorant_Garamond'] italic text-[18px] mb-8 leading-relaxed max-w-[500px] mx-auto"
-          style={{ color: '#B38080' }}
+          style={{ color: 'var(--text-muted)' }}
         >
           Curate your collection. Rate films. Discover hidden masterpieces. No ads. No algorithms. Just cinema.
         </p>
 
         {/* Golden divider */}
         <div className="flex items-center justify-center gap-3 mb-8">
-          <div className="h-[1px] flex-1 max-w-[80px]" style={{ backgroundColor: '#3D0000' }} />
-          <span style={{ color: '#C9A84C', fontSize: '14px' }}>✦</span>
-          <div className="h-[1px] flex-1 max-w-[80px]" style={{ backgroundColor: '#3D0000' }} />
+          <div className="h-[1px] flex-1 max-w-[80px]" style={{ backgroundColor: 'var(--border-subtle)' }} />
+          <span style={{ color: 'var(--color-gold)', fontSize: '14px' }}>✦</span>
+          <div className="h-[1px] flex-1 max-w-[80px]" style={{ backgroundColor: 'var(--border-subtle)' }} />
         </div>
 
         <Link
           href="/auth/sign-up"
           className="inline-flex h-[56px] px-10 items-center text-[16px] font-bold tracking-[0.15em] text-white no-underline transition-all duration-300"
           style={{
-            background: 'linear-gradient(135deg, #8B0000, #DC143C)',
+            background: 'linear-gradient(135deg, var(--color-deep), var(--color-primary))',
             borderRadius: '2px',
             boxShadow: '0 4px 15px rgba(220,20,60,0.2)',
             fontFamily: "'Playfair Display SC', serif",
           }}
-          onMouseEnter={e => {
-            e.currentTarget.style.background = 'linear-gradient(135deg, #DC143C, #FF1744)'
-            e.currentTarget.style.boxShadow = '0 6px 25px rgba(220,20,60,0.4)'
-          }}
-          onMouseLeave={e => {
-            e.currentTarget.style.background = 'linear-gradient(135deg, #8B0000, #DC143C)'
-            e.currentTarget.style.boxShadow = '0 4px 15px rgba(220,20,60,0.2)'
-          }}
+
         >
           CLAIM YOUR FREE TICKET
         </Link>
 
-        <p className="mt-5 text-[14px]" style={{ color: '#6B4B4B' }}>
+        <p className="mt-5 text-[14px]" style={{ color: 'var(--text-muted-2)' }}>
           Already a member?{' '}
-          <Link href="/auth/sign-in" className="text-[#DC143C] no-underline hover:text-[#FF1744] transition-colors">
+          <Link href="/auth/sign-in" className="text-[var(--color-primary)] no-underline hover:text-[var(--color-error)] transition-colors">
             Sign In
           </Link>
         </p>

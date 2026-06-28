@@ -60,15 +60,15 @@ export default function TheaterInput({
       <label
         htmlFor={inputId}
         className="text-[12px] font-medium tracking-[0.1em] uppercase"
-        style={{ color: focused ? '#DC143C' : '#808080' }}
+        style={{ color: focused ? 'var(--color-primary)' : 'var(--text-muted-3)' }}
       >
         {label}
-        {required && <span className="text-[#DC143C] ml-1">*</span>}
+        {required && <span className="text-[var(--color-primary)] ml-1">*</span>}
       </label>
 
       <div className="relative">
         {icon && (
-          <div className="absolute left-4 top-1/2 -translate-y-1/2" style={{ color: error ? '#FF1744' : focused ? '#DC143C' : '#8B0000' }}>
+          <div className="absolute left-4 top-1/2 -translate-y-1/2" style={{ color: error ? 'var(--color-error)' : focused ? 'var(--color-primary)' : 'var(--color-deep)' }}>
             {ICON_PATHS[icon]}
           </div>
         )}
@@ -90,12 +90,12 @@ export default function TheaterInput({
             paddingRight: showToggle ? '48px' : '16px',
             backgroundColor: 'rgba(10,5,5,0.8)',
             border: error
-              ? '2px solid #FF1744'
+              ? '2px solid var(--color-error)'
               : focused
-              ? '2px solid #DC143C'
-              : '1px solid #3D0000',
+              ? '2px solid var(--color-primary)'
+              : '1px solid var(--border-subtle)',
             borderRadius: '2px',
-            color: '#FFFFFF',
+            color: 'var(--text-primary)',
             fontSize: '15px',
             outline: 'none',
             transition: 'all 300ms ease-out',
@@ -107,7 +107,7 @@ export default function TheaterInput({
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-[#6B4B4B] hover:text-[#B3B3B3]"
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-[var(--text-muted-2)] hover:text-[var(--text-secondary)]"
             tabIndex={-1}
             aria-label={showPassword ? 'Hide password' : 'Show password'}
           >
@@ -132,12 +132,12 @@ export default function TheaterInput({
 
       {error && (
         <div className="flex items-center gap-2 mt-1">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FF1744" strokeWidth="2">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--color-error)" strokeWidth="2">
             <circle cx="12" cy="12" r="10" />
             <line x1="12" y1="8" x2="12" y2="12" />
             <line x1="12" y1="16" x2="12.01" y2="16" />
           </svg>
-          <span className="text-[12px]" style={{ color: '#FF1744' }}>{error}</span>
+          <span className="text-[12px]" style={{ color: 'var(--color-error)' }}>{error}</span>
         </div>
       )}
     </div>

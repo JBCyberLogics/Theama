@@ -18,9 +18,9 @@ export default function Toast({ message, type = 'info', isVisible, onClose, dura
   }, [isVisible, duration, onClose])
 
   const colors = {
-    success: { bg: 'rgba(201,168,76,0.1)', border: '#C9A84C', icon: '#C9A84C' },
-    error: { bg: 'rgba(255,23,68,0.1)', border: '#FF1744', icon: '#FF1744' },
-    info: { bg: 'rgba(220,20,60,0.1)', border: '#DC143C', icon: '#DC143C' },
+    success: { bg: 'rgba(201,168,76,0.1)', border: 'var(--color-gold)', icon: 'var(--color-gold)' },
+    error: { bg: 'rgba(255,23,68,0.1)', border: 'var(--color-error)', icon: 'var(--color-error)' },
+    info: { bg: 'rgba(220,20,60,0.1)', border: 'var(--color-primary)', icon: 'var(--color-primary)' },
   }
 
   const c = colors[type]

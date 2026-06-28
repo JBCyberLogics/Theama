@@ -43,9 +43,9 @@ export default function AdmitButton({
   const variantStyles: Record<string, React.CSSProperties> = {
     solid: {
       background: hovered && !disabled && !loading
-        ? 'linear-gradient(135deg, #DC143C, #FF1744)'
-        : 'linear-gradient(135deg, #8B0000, #DC143C)',
-      color: '#FFFFFF',
+        ? 'linear-gradient(135deg, var(--color-primary), var(--color-error))'
+        : 'linear-gradient(135deg, var(--color-deep), var(--color-primary))',
+      color: 'var(--text-primary)',
       border: 'none',
       boxShadow: hovered && !disabled && !loading
         ? '0 6px 25px rgba(220,20,60,0.4)'
@@ -53,12 +53,12 @@ export default function AdmitButton({
     },
     outline: {
       background: 'transparent',
-      color: hovered && !disabled ? '#C9A84C' : '#C9A84C',
-      border: '1px solid #C9A84C',
+      color: hovered && !disabled ? 'var(--color-gold)' : 'var(--color-gold)',
+      border: '1px solid var(--color-gold)',
     },
     ghost: {
       background: 'transparent',
-      color: hovered && !disabled ? '#FFFFFF' : '#B3B3B3',
+      color: hovered && !disabled ? 'var(--text-primary)' : 'var(--text-secondary)',
       border: '1px solid transparent',
     },
   }
@@ -66,8 +66,8 @@ export default function AdmitButton({
   const stateStyles: React.CSSProperties = {}
   if (disabled) {
     Object.assign(stateStyles, {
-      background: '#3D0000',
-      color: '#6B4B4B',
+      background: 'var(--border-subtle)',
+      color: 'var(--text-muted-2)',
       boxShadow: 'none',
     })
   }

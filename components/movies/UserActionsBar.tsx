@@ -5,6 +5,7 @@ import RoseRating from '@/components/ui/RoseRating'
 import { supabase } from '@/lib/supabaseClient'
 import { useAuth } from '@/context/AuthContext'
 import { useRouter } from 'next/navigation'
+import StarIcon from '@/components/ui/icons/StarIcon'
 
 interface UserActionsBarProps {
   movieId: number
@@ -58,15 +59,13 @@ export default function UserActionsBar({
           }}
           className="h-[38px] px-4 inline-flex items-center gap-2 text-[13px] font-medium tracking-[0.05em] transition-all duration-200"
           style={{
-            color: rating > 0 ? '#C9A84C' : '#808080',
-            border: rating > 0 ? '1px solid rgba(201,168,76,0.3)' : '1px solid #3D0000',
+            color: rating > 0 ? 'var(--color-gold)' : 'var(--text-muted-3)',
+            border: rating > 0 ? '1px solid rgba(201,168,76,0.3)' : '1px solid var(--border-subtle)',
             borderRadius: '2px',
             backgroundColor: rating > 0 ? 'rgba(201,168,76,0.05)' : 'transparent',
           }}
         >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill={rating > 0 ? '#C9A84C' : 'none'} stroke="currentColor" strokeWidth="1.5">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-          </svg>
+          <StarIcon size={14} fill={rating > 0 ? 'var(--color-gold)' : 'none'} stroke="currentColor" strokeWidth={1.5} />
           {rating > 0 ? `${(rating / 2).toFixed(1)}` : 'RATE'}
         </button>
 
@@ -76,8 +75,8 @@ export default function UserActionsBar({
             <div
               className="absolute bottom-full left-0 mb-2 z-50 p-4"
               style={{
-                backgroundColor: '#141414',
-                border: '1px solid #1A1A1A',
+                backgroundColor: 'var(--surface-elevated)',
+                border: '1px solid var(--border-default)',
                 borderRadius: '2px',
                 boxShadow: '0 8px 32px rgba(0,0,0,0.4)',
               }}
@@ -90,7 +89,7 @@ export default function UserActionsBar({
               />
               {saving && (
                 <div className="text-center mt-2">
-                  <span className="text-[#808080] text-[11px]">Saving...</span>
+                  <span className="text-[var(--text-muted-3)] text-[11px]">Saving...</span>
                 </div>
               )}
             </div>
@@ -105,13 +104,13 @@ export default function UserActionsBar({
         }}
         className="h-[38px] px-4 inline-flex items-center gap-2 text-[13px] font-medium tracking-[0.05em] transition-all duration-200"
         style={{
-          color: isInWatchlist ? '#DC143C' : '#808080',
-          border: isInWatchlist ? '1px solid rgba(220,20,60,0.3)' : '1px solid #3D0000',
+          color: isInWatchlist ? 'var(--color-primary)' : 'var(--text-muted-3)',
+          border: isInWatchlist ? '1px solid rgba(220,20,60,0.3)' : '1px solid var(--border-subtle)',
           borderRadius: '2px',
           backgroundColor: isInWatchlist ? 'rgba(220,20,60,0.05)' : 'transparent',
         }}
       >
-        <svg width="14" height="14" viewBox="0 0 24 24" fill={isInWatchlist ? '#DC143C' : 'none'} stroke="currentColor" strokeWidth="1.5">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill={isInWatchlist ? 'var(--color-primary)' : 'none'} stroke="currentColor" strokeWidth="1.5">
           <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
         </svg>
         {isInWatchlist ? 'SAVED' : 'SAVE'}

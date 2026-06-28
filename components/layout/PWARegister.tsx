@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import CloseIcon from '@/components/ui/icons/CloseIcon'
 
 export default function PWARegister() {
   const [deferredPrompt, setDeferredPrompt] = useState(null)
@@ -59,8 +60,8 @@ export default function PWARegister() {
       <div
         className="relative p-4 flex items-center gap-3 shadow-lg"
         style={{
-          backgroundColor: '#141414',
-          border: '1px solid #1A1A1A',
+          backgroundColor: 'var(--surface-elevated)',
+          border: '1px solid var(--border-default)',
           borderRadius: '4px',
           boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
         }}
@@ -71,14 +72,14 @@ export default function PWARegister() {
 
         <div className="flex-1 min-w-0">
           <p className="text-white text-[13px] font-medium">Install THEAMA</p>
-          <p className="text-[#808080] text-[11px] truncate">Add to your home screen for the full experience</p>
+          <p className="text-[var(--text-muted-3)] text-[11px] truncate">Add to your home screen for the full experience</p>
         </div>
 
         <button
           onClick={handleInstall}
           className="h-[34px] px-4 text-[12px] font-semibold tracking-[0.05em] text-white transition-all duration-200 flex-shrink-0"
           style={{
-            background: 'linear-gradient(135deg, #8B0000, #DC143C)',
+            background: 'linear-gradient(135deg, var(--color-deep), var(--color-primary))',
             borderRadius: '2px',
           }}
         >
@@ -87,12 +88,10 @@ export default function PWARegister() {
 
         <button
           onClick={handleDismiss}
-          className="w-6 h-6 flex items-center justify-center text-[#6B4B4B] hover:text-white transition-colors flex-shrink-0"
+          className="w-6 h-6 flex items-center justify-center text-[var(--text-muted-2)] hover:text-white transition-colors flex-shrink-0"
           aria-label="Dismiss"
         >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-            <path d="M18 6L6 18M6 6l12 12" />
-          </svg>
+          <CloseIcon size={14} stroke="currentColor" strokeWidth={2} />
         </button>
       </div>
     </div>

@@ -28,7 +28,7 @@ export default function FilmBackdropHero({ movie, onPlay, onAddToWatchlist }: Fi
         background: 'radial-gradient(ellipse at top center, rgba(220,20,60,0.08) 0%, transparent 70%)',
       }} />
       <div className="absolute inset-0 pointer-events-none" style={{
-        background: 'linear-gradient(to bottom, transparent 40%, #0A0A0A 100%)',
+        background: 'linear-gradient(to bottom, transparent 40%, var(--surface-base) 100%)',
       }} />
       <div className="absolute inset-0 pointer-events-none" style={{
         background: 'linear-gradient(to right, rgba(10,10,10,0.9) 0%, transparent 50%)',
@@ -84,17 +84,9 @@ export default function FilmBackdropHero({ movie, onPlay, onAddToWatchlist }: Fi
                 onClick={onPlay}
                 className="h-[48px] px-7 inline-flex items-center gap-2 text-[14px] font-medium tracking-[0.1em] text-white transition-all duration-300"
                 style={{
-                  background: 'linear-gradient(135deg, #8B0000, #DC143C)',
+                  background: 'linear-gradient(135deg, var(--color-deep), var(--color-primary))',
                   borderRadius: '2px',
                   boxShadow: '0 4px 15px rgba(220,20,60,0.2)',
-                }}
-                onMouseEnter={e => {
-                  e.currentTarget.style.background = 'linear-gradient(135deg, #DC143C, #FF1744)'
-                  e.currentTarget.style.boxShadow = '0 6px 25px rgba(220,20,60,0.4)'
-                }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.background = 'linear-gradient(135deg, #8B0000, #DC143C)'
-                  e.currentTarget.style.boxShadow = '0 4px 15px rgba(220,20,60,0.2)'
                 }}
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none">
@@ -107,17 +99,9 @@ export default function FilmBackdropHero({ movie, onPlay, onAddToWatchlist }: Fi
                 onClick={onAddToWatchlist}
                 className="h-[48px] px-5 inline-flex items-center gap-2 text-[14px] font-medium tracking-[0.1em] transition-all duration-200"
                 style={{
-                  color: '#B38080',
+                  color: 'var(--text-muted)',
                   border: '1px solid rgba(179,128,128,0.3)',
                   borderRadius: '2px',
-                }}
-                onMouseEnter={e => {
-                  e.currentTarget.style.color = '#FFFFFF'
-                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)'
-                }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.color = '#B38080'
-                  e.currentTarget.style.borderColor = 'rgba(179,128,128,0.3)'
                 }}
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">

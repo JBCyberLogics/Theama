@@ -33,10 +33,10 @@ export default function StatsOverview({
             borderRadius: '4px',
           }}
         >
-          <p className="font-['Playfair_Display'] text-white text-[28px] font-bold">
+          <p className="font-['Playfair_Display'] text-white text-[22px] sm:text-[28px] font-bold">
             {item.value}
           </p>
-          <p className="text-[#808080] text-[12px] tracking-[0.1em] uppercase mt-1">
+          <p className="text-[var(--text-muted-3)] text-[12px] tracking-[0.1em] uppercase mt-1">
             {item.label}
           </p>
         </div>

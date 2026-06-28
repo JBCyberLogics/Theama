@@ -23,11 +23,11 @@ export default function Tooltip({ children, content }: TooltipProps) {
         <div
           className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 whitespace-nowrap z-50 pointer-events-none"
           style={{
-            backgroundColor: '#141414',
-            border: '1px solid #1A1A1A',
+            backgroundColor: 'var(--surface-elevated)',
+            border: '1px solid var(--border-default)',
             borderRadius: '2px',
             fontSize: '12px',
-            color: '#FFFFFF',
+            color: 'var(--text-primary)',
           }}
         >
           {content}
@@ -36,7 +36,7 @@ export default function Tooltip({ children, content }: TooltipProps) {
             style={{
               borderLeft: '5px solid transparent',
               borderRight: '5px solid transparent',
-              borderTop: '5px solid #1A1A1A',
+              borderTop: '5px solid var(--border-default)',
             }}
           />
         </div>

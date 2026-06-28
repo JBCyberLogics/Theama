@@ -6,7 +6,7 @@ interface GoldenDividerProps {
 export default function GoldenDivider({ text, className = '' }: GoldenDividerProps) {
   return (
     <div className={`golden-divider ${className}`}>
-      {text && <span className="text-[#6B4B4B]">{text}</span>}
+      {text && <span className="text-[var(--text-muted-2)]">{text}</span>}
     </div>
   )
 }

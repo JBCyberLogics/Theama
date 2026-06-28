@@ -109,7 +109,7 @@ export default function TicketAuthCard({ mode, loading: externalLoading, onSubmi
         className="relative w-full max-w-[440px] mx-auto"
         style={{
           backgroundColor: 'rgba(20,8,8,0.95)',
-          border: error ? '2px solid #FF1744' : success ? '2px solid #C9A84C' : '2px solid #8B0000',
+          border: error ? '2px solid var(--color-error)' : success ? '2px solid var(--color-gold)' : '2px solid var(--color-deep)',
           boxShadow: error
             ? '0 0 60px rgba(255,23,68,0.2)'
             : success
@@ -129,26 +129,26 @@ export default function TicketAuthCard({ mode, loading: externalLoading, onSubmi
 
         {/* Perforation top */}
         <div className="flex items-center justify-center gap-2 pt-5 pb-2">
-          <div className="flex-1 h-[1px] border-t border-dashed" style={{ borderColor: '#C9A84C' }} />
-          <span style={{ color: '#C9A84C', fontSize: '10px' }}>✦</span>
-          <div className="flex-1 h-[1px] border-t border-dashed" style={{ borderColor: '#C9A84C' }} />
+          <div className="flex-1 h-[1px] border-t border-dashed" style={{ borderColor: 'var(--color-gold)' }} />
+          <span style={{ color: 'var(--color-gold)', fontSize: '10px' }}>✦</span>
+          <div className="flex-1 h-[1px] border-t border-dashed" style={{ borderColor: 'var(--color-gold)' }} />
         </div>
 
         {/* Header */}
         <div className="px-8 pt-4 pb-6 text-center">
           <div className="flex justify-center mb-4">
             <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="16" cy="16" r="15" stroke="#C9A84C" strokeWidth="1.5" fill="none" />
-              <path d="M16 6C12 6 8 8 8 12C8 14 9 16 10 18C11 20 12 21 16 26C20 21 21 20 22 18C23 16 24 14 24 12C24 8 20 6 16 6Z" fill="#C9A84C" opacity="0.8" />
-              <path d="M16 10C13.5 10 12 11.5 12 13.5C12 14.8 12.8 16 14 17C14.8 17.8 15.4 18.4 16 22C16.6 18.4 17.2 17.8 18 17C19.2 16 20 14.8 20 13.5C20 11.5 18.5 10 16 10Z" fill="#C9A84C" opacity="0.4" />
+              <circle cx="16" cy="16" r="15" stroke="var(--color-gold)" strokeWidth="1.5" fill="none" />
+              <path d="M16 6C12 6 8 8 8 12C8 14 9 16 10 18C11 20 12 21 16 26C20 21 21 20 22 18C23 16 24 14 24 12C24 8 20 6 16 6Z" fill="var(--color-gold)" opacity="0.8" />
+              <path d="M16 10C13.5 10 12 11.5 12 13.5C12 14.8 12.8 16 14 17C14.8 17.8 15.4 18.4 16 22C16.6 18.4 17.2 17.8 18 17C19.2 16 20 14.8 20 13.5C20 11.5 18.5 10 16 10Z" fill="var(--color-gold)" opacity="0.4" />
             </svg>
           </div>
 
           <h1 className="font-['Playfair_Display'] text-[28px] font-bold text-white tracking-[-0.02em]">
-            THEAMA<span style={{ color: '#DC143C' }}>.</span>
+            THEAMA<span style={{ color: 'var(--color-primary)' }}>.</span>
           </h1>
 
-          <p className="font-['Cormorant_Garamond'] italic text-[16px] mt-1" style={{ color: '#B38080' }}>
+          <p className="font-['Cormorant_Garamond'] italic text-[16px] mt-1" style={{ color: 'var(--text-muted)' }}>
             {isSignIn ? 'The Spectacle Awaits' : isSignUp ? 'Claim Your Stage Pass' : 'We\'ll Send a Magic Link'}
           </p>
 
@@ -159,7 +159,7 @@ export default function TicketAuthCard({ mode, loading: externalLoading, onSubmi
                 href="/auth/sign-in"
                 className="relative text-[13px] font-medium tracking-[0.15em] uppercase no-underline pb-2 transition-colors"
                 style={{
-                  color: isSignIn ? '#DC143C' : '#6B4B4B',
+                  color: isSignIn ? 'var(--color-primary)' : 'var(--text-muted-2)',
                 }}
               >
                 Sign In
@@ -169,7 +169,7 @@ export default function TicketAuthCard({ mode, loading: externalLoading, onSubmi
                     style={{
                       width: '40px',
                       height: '3px',
-                      backgroundColor: '#DC143C',
+                      backgroundColor: 'var(--color-primary)',
                       borderRadius: '1px',
                     }}
                   />
@@ -179,7 +179,7 @@ export default function TicketAuthCard({ mode, loading: externalLoading, onSubmi
                 href="/auth/sign-up"
                 className="relative text-[13px] font-medium tracking-[0.15em] uppercase no-underline pb-2 transition-colors"
                 style={{
-                  color: isSignUp ? '#DC143C' : '#6B4B4B',
+                  color: isSignUp ? 'var(--color-primary)' : 'var(--text-muted-2)',
                 }}
               >
                 Sign Up
@@ -189,7 +189,7 @@ export default function TicketAuthCard({ mode, loading: externalLoading, onSubmi
                     style={{
                       width: '40px',
                       height: '3px',
-                      backgroundColor: '#DC143C',
+                      backgroundColor: 'var(--color-primary)',
                       borderRadius: '1px',
                     }}
                   />
@@ -246,9 +246,8 @@ export default function TicketAuthCard({ mode, loading: externalLoading, onSubmi
                   <Link
                     href="/auth/forgot-password"
                     className="text-[13px] no-underline transition-colors"
-                    style={{ color: '#B38080' }}
-                    onMouseEnter={e => (e.currentTarget.style.color = '#DC143C')}
-                    onMouseLeave={e => (e.currentTarget.style.color = '#B38080')}
+                    style={{ color: 'var(--text-muted)' }}
+
                   >
                     Lost your ticket?
                   </Link>
@@ -262,9 +261,9 @@ export default function TicketAuthCard({ mode, loading: externalLoading, onSubmi
               <Link
                 href="/auth/forgot-password"
                 className="text-[13px] no-underline transition-colors"
-                style={{ color: '#B38080' }}
-                onMouseEnter={e => (e.currentTarget.style.color = '#DC143C')}
-                onMouseLeave={e => (e.currentTarget.style.color = '#B38080')}
+                style={{ color: 'var(--text-muted)' }}
+                onMouseEnter={e => (e.currentTarget.style.color = 'var(--color-primary)')}
+                onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
               >
                 Lost your ticket?
               </Link>
@@ -273,12 +272,12 @@ export default function TicketAuthCard({ mode, loading: externalLoading, onSubmi
 
           {error && (
             <div className="flex items-center gap-2 p-3" style={{ backgroundColor: 'rgba(255,23,68,0.1)', border: '1px solid rgba(255,23,68,0.2)', borderRadius: '2px' }}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF1744" strokeWidth="2">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-error)" strokeWidth="2">
                 <circle cx="12" cy="12" r="10" />
                 <line x1="12" y1="8" x2="12" y2="12" />
                 <line x1="12" y1="16" x2="12.01" y2="16" />
               </svg>
-              <span className="text-[13px]" style={{ color: '#FF1744' }}>{error}</span>
+              <span className="text-[13px]" style={{ color: 'var(--color-error)' }}>{error}</span>
             </div>
           )}
 
@@ -303,18 +302,11 @@ export default function TicketAuthCard({ mode, loading: externalLoading, onSubmi
                   onClick={() => onSocialAuth?.('google')}
                   className="w-[48px] h-[48px] flex items-center justify-center transition-all duration-200"
                   style={{
-                    border: '1px solid #3D0000',
+                    border: '1px solid var(--border-subtle)',
                     borderRadius: '2px',
                     backgroundColor: 'transparent',
                   }}
-                  onMouseEnter={e => {
-                    e.currentTarget.style.borderColor = '#DC143C'
-                    e.currentTarget.style.backgroundColor = 'rgba(220,20,60,0.08)'
-                  }}
-                  onMouseLeave={e => {
-                    e.currentTarget.style.borderColor = '#3D0000'
-                    e.currentTarget.style.backgroundColor = 'transparent'
-                  }}
+
                   aria-label="Sign in with Google"
                 >
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
@@ -330,13 +322,13 @@ export default function TicketAuthCard({ mode, loading: externalLoading, onSubmi
 
           {/* Bottom link */}
           <div className="text-center pt-2">
-            <span className="text-[13px]" style={{ color: '#B38080' }}>
+            <span className="text-[13px]" style={{ color: 'var(--text-muted)' }}>
               {isSignIn ? 'First time? ' : isSignUp ? 'Already have a ticket? ' : 'Remember your ticket? '}
             </span>
             <Link
               href={isSignIn ? '/auth/sign-up' : isSignUp ? '/auth/sign-in' : '/auth/sign-in'}
               className="text-[13px] font-medium no-underline transition-colors"
-              style={{ color: '#DC143C' }}
+              style={{ color: 'var(--color-primary)' }}
             >
               {isSignIn ? 'Claim Your Ticket →' : isSignUp ? 'Sign In →' : 'Back to Sign In'}
             </Link>
@@ -345,9 +337,9 @@ export default function TicketAuthCard({ mode, loading: externalLoading, onSubmi
 
         {/* Perforation bottom */}
         <div className="flex items-center justify-center gap-2 pb-5 pt-2">
-          <div className="flex-1 h-[1px] border-t border-dashed" style={{ borderColor: '#C9A84C' }} />
-          <span style={{ color: '#C9A84C', fontSize: '10px' }}>✦</span>
-          <div className="flex-1 h-[1px] border-t border-dashed" style={{ borderColor: '#C9A84C' }} />
+          <div className="flex-1 h-[1px] border-t border-dashed" style={{ borderColor: 'var(--color-gold)' }} />
+          <span style={{ color: 'var(--color-gold)', fontSize: '10px' }}>✦</span>
+          <div className="flex-1 h-[1px] border-t border-dashed" style={{ borderColor: 'var(--color-gold)' }} />
         </div>
       </div>
     </>
