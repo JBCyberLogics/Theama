@@ -11,7 +11,10 @@ const nextConfig = {
   },
   async rewrites() {
     return [
-      { source: '/api/:path*', destination: 'http://localhost:3001/api/:path*' },
+      { source: '/api/:path*', destination: process.env.NODE_ENV === 'production'
+        ? 'https://theama-api.onrender.com/api/:path*'
+        : 'http://localhost:3001/api/:path*'
+      },
     ]
   },
   async redirects() {
