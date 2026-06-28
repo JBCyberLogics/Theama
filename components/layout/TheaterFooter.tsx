@@ -49,7 +49,7 @@ export default function TheaterFooter() {
       style={{ backgroundColor: '#0A0505' }}
     >
       <div className="max-w-[1200px] mx-auto px-6 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-10">
           {FOOTER_COLUMNS.map(col => (
             <div key={col.title}>
               <h4 className="font-['Playfair_Display'] text-white text-[14px] font-semibold mb-4 tracking-[0.1em] uppercase">

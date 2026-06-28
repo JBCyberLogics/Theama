@@ -68,7 +68,7 @@ export default function MobileNav() {
         borderTop: '1px solid #1A1A1A',
       }}
     >
-      <div className="flex items-center justify-around h-[56px] px-2 pb-[env(safe-area-inset-bottom)]">
+      <div className="flex items-center justify-around min-h-[56px] px-2 pb-[env(safe-area-inset-bottom)]">
         {tabs.map((tab) => {
           const active = pathname === tab.href || pathname.startsWith(tab.href + '/') ||
             (tab.href === '/browse' && pathname === '/')

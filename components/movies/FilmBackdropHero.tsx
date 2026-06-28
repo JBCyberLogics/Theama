@@ -15,7 +15,7 @@ export default function FilmBackdropHero({ movie, onPlay, onAddToWatchlist }: Fi
   return (
     <div
       className="relative w-full overflow-hidden"
-      style={{ height: '70vh', minHeight: '500px' }}
+      style={{ height: 'clamp(50vh, 70vh, 900px)', minHeight: '400px' }}
     >
       <img
         src={getBackdropFallback(movie.backdrop_path)}
@@ -34,7 +34,7 @@ export default function FilmBackdropHero({ movie, onPlay, onAddToWatchlist }: Fi
         background: 'linear-gradient(to right, rgba(10,10,10,0.9) 0%, transparent 50%)',
       }} />
 
-      <div className="relative z-10 h-full flex items-end pb-16 px-8 md:px-16 max-w-[1440px] mx-auto">
+      <div className="relative z-10 h-full flex items-end pb-12 md:pb-16 px-6 md:px-16 max-w-[1440px] mx-auto">
         <div className="flex gap-8 items-end">
           {/* Poster */}
           {movie.poster_path && (
@@ -48,7 +48,7 @@ export default function FilmBackdropHero({ movie, onPlay, onAddToWatchlist }: Fi
             </div>
           )}
 
-          <div className="max-w-[600px]">
+          <div className="max-w-[600px] w-full">
             <h1
               className="font-['Playfair_Display'] font-bold text-white mb-2"
               style={{

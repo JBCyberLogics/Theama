@@ -41,14 +41,14 @@ export default function PlaybillCard({ movie, index = 0, layout = 'grid' }: Play
 
           {/* Hover overlay - card overlay gradient */}
           <div
-            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out pointer-events-none"
+            className="absolute inset-0 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-all duration-300 ease-out pointer-events-none"
             style={{
               background: 'linear-gradient(to top, rgba(0,0,0,0.95) 0%, transparent 60%)',
             }}
           />
 
           {/* Hover info */}
-          <div className="absolute bottom-0 left-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out translate-y-2 group-hover:translate-y-0">
+          <div className="absolute bottom-0 left-0 right-0 p-4 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-all duration-300 ease-out translate-y-2 group-hover:translate-y-0 group-active:translate-y-0">
             <h3 className="font-['Playfair_Display'] text-white text-[15px] font-semibold leading-tight mb-1.5 truncate">
               {movie.title}
             </h3>
@@ -66,7 +66,7 @@ export default function PlaybillCard({ movie, index = 0, layout = 'grid' }: Play
           </div>
 
           {/* Rating badge top-right */}
-          <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
+          <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-all duration-300">
             <div
               className="flex items-center gap-1 px-2 py-1"
               style={{
