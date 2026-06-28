@@ -3,18 +3,41 @@
 import { useState, useEffect } from 'react'
 import AuthGuard from '@/components/auth/AuthGuard'
 import PlaybillGrid from '@/components/movies/PlaybillGrid'
+import { useAuth } from '@/context/AuthContext'
 
 export default function MyCollectionPage() {
+  const { session } = useAuth()
   const [movies, setMovies] = useState([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch('/api/watchlist')
+    if (!session?.access_token) return
+    fetch('/api/watchlist', {
+      headers: { Authorization: `Bearer ${session.access_token}` },
+    })
       .then(res => res.json())
-      .then(data => setMovies(data.results || []))
+      .then(data => {
+        const mapped = (Array.isArray(data) ? data : []).map(item => ({
+          id: item.movie_id,
+          title: item.movie_title,
+          poster_path: item.poster_path,
+          backdrop_path: item.backdrop_path,
+          vote_average: item.tmdb_rating || 0,
+          release_date: item.release_date,
+          overview: '',
+          genre_ids: [],
+          original_language: '',
+          adult: false,
+          video: false,
+          popularity: 0,
+          vote_count: 0,
+          genres: item.genres?.split(',').map(n => ({ id: 0, name: n.trim() })) || [],
+        }))
+        setMovies(mapped)
+      })
       .catch(() => setMovies([]))
       .finally(() => setLoading(false))
-  }, [])
+  }, [session?.access_token])
 
   return (
     <AuthGuard>

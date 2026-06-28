@@ -2,25 +2,18 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { useAuth } from '@/context/AuthContext'
 import TicketAuthCard from '@/components/auth/TicketAuthCard'
 
 export default function SignInPage() {
   const router = useRouter()
+  const { signIn } = useAuth()
   const [error] = useState(null)
 
   const handleSubmit = async (data) => {
-    try {
-      const res = await fetch('/api/auth/sign-in', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      })
-      const result = await res.json()
-      if (result.error) throw new Error(result.error)
-      router.push('/')
-    } catch (err) {
-      throw err
-    }
+    const { error } = await signIn(data.email, data.password)
+    if (error) throw new Error(error)
+    router.push('/profile')
   }
 
   if (error) {

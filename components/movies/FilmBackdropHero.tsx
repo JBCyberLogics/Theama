@@ -9,9 +9,11 @@ interface FilmBackdropHeroProps {
   movie: Movie
   onPlay?: () => void
   onAddToWatchlist?: () => void
+  inWatchlist?: boolean
+  watchlistLoading?: boolean
 }
 
-export default function FilmBackdropHero({ movie, onPlay, onAddToWatchlist }: FilmBackdropHeroProps) {
+export default function FilmBackdropHero({ movie, onPlay, onAddToWatchlist, inWatchlist = false, watchlistLoading = false }: FilmBackdropHeroProps) {
   return (
     <div
       className="relative w-full overflow-hidden"
@@ -97,17 +99,21 @@ export default function FilmBackdropHero({ movie, onPlay, onAddToWatchlist }: Fi
 
               <button
                 onClick={onAddToWatchlist}
+                disabled={watchlistLoading}
                 className="h-[48px] px-5 inline-flex items-center gap-2 text-[14px] font-medium tracking-[0.1em] transition-all duration-200"
                 style={{
-                  color: 'var(--text-muted)',
-                  border: '1px solid rgba(179,128,128,0.3)',
+                  color: inWatchlist ? 'var(--color-gold)' : 'var(--text-muted)',
+                  border: inWatchlist
+                    ? '1px solid var(--color-gold)'
+                    : '1px solid rgba(179,128,128,0.3)',
                   borderRadius: '2px',
+                  opacity: watchlistLoading ? 0.6 : 1,
                 }}
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill={inWatchlist ? 'var(--color-gold)' : 'none'} stroke={inWatchlist ? 'var(--color-gold)' : 'currentColor'} strokeWidth="1.5">
                   <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
                 </svg>
-                ADD TO COLLECTION
+                {inWatchlist ? 'IN COLLECTION' : 'ADD TO COLLECTION'}
               </button>
             </div>
           </div>
