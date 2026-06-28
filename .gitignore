@@ -8,3 +8,5 @@ next-env.d.ts
 
 # Added by Theama Setup Wizard
 .env.local
+.vercel
+.env*
